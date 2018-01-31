@@ -1,3 +1,5 @@
+package nz.co.aberg.blip;
+
 import java.net.URL;
 
 public class JetPhoto {
@@ -5,6 +7,7 @@ public class JetPhoto {
     private String author;
     private URL thumbnail;
     private String aircraftModel;
+    private URL photoUrl;
 
 
     public String getAuthor() {
@@ -30,5 +33,13 @@ public class JetPhoto {
 
     public void setAircraftModel(String aircraftModel) {
         this.aircraftModel = aircraftModel;
+    }
+
+    public URL getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(URL photoUrl) {
+        this.photoUrl = photoUrl;
     }
 }
