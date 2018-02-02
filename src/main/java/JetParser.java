@@ -1,3 +1,4 @@
+import nz.co.aberg.blip.JetPhoto;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -8,8 +9,8 @@ import java.net.URL;
 import java.util.ArrayList;
 public class JetParser {
 
-    public static void parsePage() throws IOException {
-        //This ArrayList<jetPhoto> jetPhotos it uses to store jetPhoto objects
+    public static ArrayList<JetPhoto> parsePage(String URL) throws IOException {
+        //This ArrayList<JetPhoto> jetPhotos it uses to store JetPhoto objects
         ArrayList<nz.co.aberg.blip.JetPhoto> jetPhotos = new ArrayList<>();
         //Retrieving specific resources from the URL
         Element thumbnailSrc, modelSrc, authorSrc, imageSrc;
@@ -17,7 +18,7 @@ public class JetParser {
         String  thumbnail, mainImage, author, model;
 
 
-        Document doc = Jsoup.connect("https://www.jetphotos.com/registration/ZK-OKQ").get();
+        Document doc = Jsoup.connect(URL).get();
 
         Elements photoWrapper = doc.getElementsByClass("result");
         for (Element element : photoWrapper) {
@@ -48,14 +49,7 @@ public class JetParser {
                 System.out.print("NullPointerException Caught");
             }
         }
-
-        for(int i = 0; i < jetPhotos.size(); i++ ){
-            System.out.println(i);
-            System.out.println(jetPhotos.get(i).getAuthor());
-            System.out.println(jetPhotos.get(i).getThumbnail());
-            System.out.println(jetPhotos.get(i).getPhotoUrl());
-            System.out.println(jetPhotos.get(i).getAircraftModel());
-        }
+        return jetPhotos;
     }
 
 }
